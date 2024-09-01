@@ -1,0 +1,228 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Lexend+Exa:wght@100..900&family=Oxygen+Mono&display=swap");
+/* Fonts add
+.lexend-exa-<uniquifier> {
+  font-family: "Lexend Exa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+.oxygen-mono-regular {
+  font-family: "Oxygen Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+*/
+
+/* GRADIENT HEADER */
+.homeContainer {
+  padding-bottom: 20px;
+}
+
+.homeHeader {
+  width: 100%;
+  height: auto;
+  color: white;
+  padding: 50px;
+}
+
+.homeHeaderHeader {
+  width: 100%;
+  height: 550px;
+  padding-left: 50px;
+  border-radius: 40px;
+  background: rgb(59, 0, 92);
+  background: linear-gradient(
+    225deg,
+    rgba(59, 0, 92, 1) 0%,
+    rgba(117, 2, 39, 1) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.homeHeaderImage {
+  width: 1053px;
+  height: 720px;
+  background-image: url("../assets/background/homeBackground.png");
+  background-size: cover;
+  z-index: 10;
+}
+
+.homeHeaderContentWrapper {
+  width: 650px;
+  height: auto;
+}
+
+.homeHeaderHeader h1 {
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.homeHeaderHeader h4 {
+  font-family: "Oxygen Mono", monospace;
+  margin-bottom: 30px;
+}
+
+.homeHeaderStatsContainer {
+  display: flex;
+  font-family: "Oxygen Mono", monospace;
+  margin-top: 40px;
+}
+
+.homeStatItem {
+  margin-right: 50px;
+}
+
+.homeStatHeading {
+  font-size: 24px;
+}
+
+.redButton {
+  width: auto;
+  height: 50px;
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: 800;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+  border-radius: 25px;
+  background-color: #e91c1e;
+  border-style: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.redButton:hover {
+  background-color: #9747ff;
+}
+/* END OF THE HEADER */
+
+/* HOT DISCUSSION SECTION */
+
+.homeHotDiscussionsCont {
+  width: 100%;
+  height: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+}
+
+.homeHotDiscussions {
+  width: 100%;
+  height: auto;
+  padding: 30px;
+  border-radius: 40px;
+  background: rgb(59, 0, 92);
+  background: linear-gradient(
+    225deg,
+    rgba(59, 0, 92, 1) 0%,
+    rgba(117, 2, 38, 0.26) 100%
+  );
+}
+
+.homeHotDiscussions h3 {
+  color: white;
+  font-family: "Lexend Exa", sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.homeHotDiscussionsPostCont {
+  width: 100%;
+  height: auto;
+  display: flex;
+  overflow-x: auto;
+  border-radius: 30px;
+}
+
+.homePostWrapper {
+  width: 550px;
+  height: auto;
+  margin-right: 10px;
+}
+/* END OF HOT DISCUSSION SECTION */
+
+/* POST CONTAINER */
+.homePostContWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.homePostContainer {
+  width: 980px;
+  display: flex;
+  justify-content: center;
+}
+
+.homeRecentPosts {
+  width: 550px;
+  border-radius: 30px;
+}
+
+.homeHotGroups {
+  width: 400px;
+  height: 500px;
+  margin-left: 30px;
+}
+
+.homeHotGroups h1 {
+  font-family: "Lexend Exa", sans-serif;
+  color: white;
+  font-weight: 800;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.homeHotGroupsContainer {
+  width: 400px;
+  height: 400px;
+  border: 1px solid #9747ff;
+  border-radius: 30px;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.homeGroupItemBody {
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  background-color: #252425;
+  margin-bottom: 10px;
+}
+
+.homeGroupItemPhoto {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-size: cover;
+  background-position: center;
+  margin-right: 20px;
+}
+
+.homeGroupItemTitle {
+  font-family: "Oxygen Mono", monospace;
+  color: white;
+  font-size: 20px;
+}
+
+.homePostBottomWrapper {
+  margin-bottom: 20px;
+}
+/* END OF POST CONTAINER */
+
+.homeSplitterLine {
+  width: 90%;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #252425;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  margin-top: -20px;
+}

@@ -1,0 +1,135 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Lexend+Exa:wght@100..900&family=Oxygen+Mono&display=swap");
+/* Fonts add
+.lexend-exa-<uniquifier> {
+  font-family: "Lexend Exa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+.oxygen-mono-regular {
+  font-family: "Oxygen Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+*/
+
+.postItemBody {
+  width: 550px;
+  height: auto;
+  border-radius: 30px;
+  background-color: #252425;
+}
+
+.postConentTop {
+  padding: 20px;
+}
+
+.postTopGroup {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.postUserProfile {
+  display: flex;
+  align-items: center;
+}
+
+.postUserProfileImage {
+  width: 30px;
+  height: 30px;
+  border-radius: 13px;
+  background-color: #656565;
+  margin-right: 10px;
+  background-size: cover;
+}
+
+.postUserProfileName {
+  font-family: "Oxygen Mono", monospace;
+  font-size: 15px;
+  color: white;
+}
+
+.postTitle {
+  font-family: "Lexend Exa", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: white;
+  margin-top: 5px;
+}
+
+.postBottomGroup {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Oxygen Mono", monospace;
+  color: white;
+  font-size: 14px;
+}
+
+.postBottomGroupLeft {
+  display: flex;
+  align-items: center;
+}
+
+.postRepliesGroup {
+  width: auto;
+  height: 30px;
+  border-radius: 15px;
+  border: 1px solid #9747ff;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 4px;
+  margin-right: 10px;
+  display: flex;
+}
+
+.postReplyIcon {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  margin-right: 5px;
+  background-image: url("../assets/icons/replyIcon.png");
+  background-size: cover;
+}
+
+.postBottomGroupRight {
+  display: flex;
+  align-items: center;
+}
+
+.postViewgroup {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 20px;
+  margin-left: 10px;
+  border-style: none;
+  transition: 0.5s;
+  background: linear-gradient(
+      90deg,
+      var(--c1, #f6d365),
+      var(--c2, #fda085) 51%,
+      var(--c1, #f6d365)
+    )
+    var(--x, 0) / 200%;
+  --c1: #e91c1e;
+  --c2: #750227;
+  color: white;
+}
+
+.postViewgroup:hover {
+  --x: 100%;
+}
+
+.postImage {
+  width: 100%;
+  height: 290px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0px 0px 30px 30px;
+}

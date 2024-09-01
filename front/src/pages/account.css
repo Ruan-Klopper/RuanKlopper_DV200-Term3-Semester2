@@ -1,0 +1,262 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Lexend+Exa:wght@100..900&family=Oxygen+Mono&display=swap");
+/* Fonts add
+.lexend-exa-<uniquifier> {
+  font-family: "Lexend Exa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+.oxygen-mono-regular {
+  font-family: "Oxygen Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+*/
+
+.accountHeader {
+  width: 90%;
+  height: 150px;
+  margin: 0 auto;
+  background-size: cover;
+  background-position: center;
+  border-radius: 24px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.accountHeaderOverlay {
+  width: 90%;
+  height: 150px;
+  border-radius: 24px;
+  background: rgb(59, 0, 92);
+  background: linear-gradient(
+    270deg,
+    rgba(59, 0, 92, 0) 0%,
+    rgba(59, 0, 92, 1) 100%
+  );
+  display: flex;
+  align-items: center;
+}
+
+.accUserProfileImg {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin-left: 25px;
+  background-size: cover;
+  background-position: center;
+  border: 3px solid #e1ab20;
+}
+
+.accUsernameGroup {
+  color: white;
+  margin-left: 20px;
+}
+
+.accHeaderUsername {
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: 800;
+  font-size: 36px;
+}
+
+.accHeaderFullname {
+  font-family: "Oxygen Mono", monospace;
+  font-size: 24px;
+}
+
+/* OpMb */
+.accountContent {
+  display: flex;
+  justify-content: center;
+}
+
+/* Optimise 4 mobile */
+.accContUserPostCont {
+  width: 550px;
+  height: auto;
+}
+
+.accContSplitterLine {
+  width: 100%;
+  height: 5px;
+  border-radius: 3px;
+  background-color: #252425;
+}
+
+.accContButtonTabsGroup {
+  margin-top: 20px;
+}
+
+.accCBtn {
+  width: auto;
+  height: 40px;
+  border-radius: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: white;
+  border: 5px solid #252425;
+  background-color: transparent;
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: 800;
+  margin-right: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.accCBtn:hover {
+  border: 5px solid #570044;
+  background-color: #570044;
+}
+
+.accCBtnActive {
+  width: auto;
+  height: 40px;
+  border-radius: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: white;
+  border: 5px solid #750227;
+  background-color: #750227;
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: 800;
+  margin-right: 10px;
+}
+
+.accContentContainer {
+  width: 100%;
+  height: 90vh;
+  margin-top: 40px;
+  border-radius: 30px;
+  overflow-y: auto;
+}
+
+.accContUserInfoCont {
+  width: 400px;
+  height: auto;
+  margin-left: 20px;
+}
+
+.accContUIuserCard {
+  width: 100%;
+  height: auto;
+  padding-bottom: 30px;
+  background-color: #252425;
+  border-radius: 30px;
+}
+
+.accContCardBanner {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 30px 30px 0px 0px;
+}
+
+.accContCardBannerOverlay {
+  width: 100%;
+  height: 200px;
+  border-radius: 30px 30px 0px 0px;
+  background: rgb(37, 36, 37);
+  background: linear-gradient(
+    0deg,
+    rgba(37, 36, 37, 1) 0%,
+    rgba(37, 36, 37, 0) 100%
+  );
+}
+
+.accContCardWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.accContLogoutBtn {
+  width: auto;
+  height: 40px;
+  border-radius: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: black;
+  background-color: #e1ab20;
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: 800;
+  margin-left: 20px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.accContLogoutBtn:hover {
+  color: white;
+  background-color: #570044;
+}
+
+.accContCardDataWrapper {
+  display: flex;
+  color: white;
+  margin-top: 80px;
+  margin-left: 30px;
+}
+
+.accContCardData {
+  margin-right: 20px;
+}
+
+.accContCardDataTop {
+  font-family: "Oxygen Mono", monospace;
+  font-size: 20px;
+}
+
+.accContCardDataBottom {
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.accContCardPP {
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+  border: 2px solid #e91c1e;
+  background-size: cover;
+  background-position: center;
+  margin-top: 100px;
+  margin-right: 30px;
+}
+
+.accContCardBottomWrapper {
+  width: 100%;
+  height: auto;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 20px;
+  color: white;
+}
+
+.accContCardBottomFullname {
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.accContCardBottomOther {
+  font-family: "Oxygen Mono", monospace;
+  font-size: 14px;
+}
+
+.accContUIupdateUserInfoForm {
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+  margin-top: 20px;
+  background-color: #252425;
+  padding: 30px;
+}
+
+.accContUIupdateUserInfoForm h3 {
+  color: white;
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  margin-bottom: 30px;
+}

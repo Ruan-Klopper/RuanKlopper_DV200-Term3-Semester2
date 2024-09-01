@@ -1,0 +1,126 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Lexend+Exa:wght@100..900&family=Oxygen+Mono&display=swap");
+/* Fonts add
+.lexend-exa-<uniquifier> {
+  font-family: "Lexend Exa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+.oxygen-mono-regular {
+  font-family: "Oxygen Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+*/
+
+body {
+  background-color: #252425;
+}
+
+.website {
+  width: 100%;
+  height: 100vh;
+}
+
+.NavBarWrapper {
+  position: relative;
+  z-index: 10;
+}
+
+.WebsiteContent {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  margin-top: -70px;
+  padding-top: 70px;
+  display: flex;
+  background-color: #252425;
+}
+
+.WebsiteContentNoNav {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+}
+
+.WebsiteRoot {
+  width: 100%;
+  height: auto;
+  overflow-y: auto;
+
+  -webkit-box-shadow: inset 0px 3px 18px -3px rgba(0, 0, 0, 1);
+  -moz-box-shadow: inset 0px 3px 18px -3px rgba(0, 0, 0, 1);
+  box-shadow: inset 0px 3px 18px -3px rgba(0, 0, 0, 1);
+  background-image: url("../assets/background/patternedBackground.png");
+  background-size: cover;
+  background-color: #161616;
+  border-radius: 20px 15px 15px 20px;
+}
+
+.Testblock {
+  width: 90%;
+  height: 2000px;
+  border-radius: 30px;
+  background-color: #252425;
+  padding: 30px;
+  color: white;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.NLIbody {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.NLIwrapper {
+  width: 350px;
+  padding: 30px;
+  border-radius: 30px;
+  background-color: #252425;
+  color: white;
+}
+
+.NLIwrapper h2 {
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.NLIwrapper h5 {
+  font-family: "Oxygen Mono", monospace;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+.NLIbtn {
+  width: auto;
+  height: 40px;
+  border-radius: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: 600;
+  background-color: #750227;
+  color: white;
+  border-style: none;
+  margin-right: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.NLIbtn:hover {
+  background-color: #e1ab20;
+}

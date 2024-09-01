@@ -1,0 +1,314 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Lexend+Exa:wght@100..900&family=Oxygen+Mono&display=swap");
+/* Fonts add
+.lexend-exa-<uniquifier> {
+  font-family: "Lexend Exa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+.oxygen-mono-regular {
+  font-family: "Oxygen Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+*/
+
+/* Desktop nave */
+
+.SideNavBody {
+  width: 230px;
+  height: 100vh;
+  background-color: #252425;
+  margin-top: -70px;
+  padding-top: 70px;
+  padding-left: 15px;
+  padding-right: 15px;
+  overflow-y: auto;
+}
+
+.SNsplitterline {
+  width: 100%;
+  height: 3px;
+  border-radius: 3px;
+  background-color: #4b4b4b;
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.SNnavs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.SNnav {
+  width: 100%;
+  height: 35px;
+  display: flex;
+  border-radius: 20px;
+  align-items: center;
+  color: white;
+  font-family: "Lexend Exa", sans-serif;
+  padding-left: 15px;
+}
+
+.SNnav:hover {
+  font-weight: bold;
+}
+
+.SNnavIconH {
+  width: 18px;
+  height: 18px;
+  background-image: url("../assets/icons/homeIcon.png");
+  background-size: cover;
+  margin-right: 10px;
+}
+.SNnavIconA {
+  width: 18px;
+  height: 18px;
+  background-image: url("../assets/icons/accountIcon.png");
+  background-size: cover;
+  margin-right: 10px;
+}
+
+.SNnavActive {
+  transition: 0.5s;
+  background: linear-gradient(
+      90deg,
+      var(--c1, #f6d365),
+      var(--c2, #fda085) 51%,
+      var(--c1, #f6d365)
+    )
+    var(--x, 0) / 200%;
+  --c1: #e91c1e;
+  --c2: #e1ab20;
+  font-weight: bold;
+}
+
+.SNnavActive:hover {
+  --x: 100%;
+}
+
+.SNrecentposts {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  background-color: #161616;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.SNrecentposts h5 {
+  color: white;
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.SNrecentpostContainer {
+  width: 100%;
+  height: 202px;
+  border-radius: 10px;
+  margin-top: 15px;
+  overflow-y: auto;
+  padding-top: -6px;
+}
+
+.SNrecentPostItemBodWithImage {
+  width: 100%;
+  height: 70px;
+  border-radius: 10px;
+  background: rgb(59, 0, 92);
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+
+  transition: 0.5s;
+  background: linear-gradient(
+      90deg,
+      var(--c1, #f6d365),
+      var(--c2, #fda085) 51%,
+      var(--c1, #f6d365)
+    )
+    var(--x, 0) / 200%;
+  --c1: #3b005c;
+  --c2: #570044;
+}
+
+.SNrecentPostItemBodWithImage:hover {
+  --x: 100%;
+}
+
+.SNrecentPostItemBodyWithOutImage {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  background: rgb(59, 0, 92);
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+
+  transition: 0.5s;
+  background: linear-gradient(
+      90deg,
+      var(--c1, #f6d365),
+      var(--c2, #fda085) 51%,
+      var(--c1, #f6d365)
+    )
+    var(--x, 0) / 200%;
+  --c1: #3b005c;
+  --c2: #570044;
+}
+
+.SNrecentPostItemBodyWithOutImage:hover {
+  --x: 100%;
+}
+
+.SNrecentPostItemImage {
+  width: 60px;
+  height: 70px;
+  background-color: #4b4b4b;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+}
+
+.SNrecentPostItemTextContainer {
+  width: 120px;
+  height: 60px;
+  overflow-y: auto;
+  padding-top: 2px;
+  margin-left: 10px;
+}
+
+.SNrecentPostItemTextContainerWithOutImage {
+  width: 100%;
+  height: auto;
+  overflow-y: auto;
+  padding-top: 2px;
+  margin-left: 10px;
+  padding: 10px;
+}
+
+.SNrecentPostItemText {
+  font-family: "Lexend Exa", sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
+}
+
+.SNbuttonCreatePost {
+  width: 100%;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 7px;
+
+  transition: 0.5s;
+  background: linear-gradient(
+      90deg,
+      var(--c1, #f6d365),
+      var(--c2, #fda085) 51%,
+      var(--c1, #f6d365)
+    )
+    var(--x, 0) / 200%;
+  --c2: #570044;
+  --c1: #e91c1e;
+}
+
+.SNbuttonCreatePost:hover {
+  --x: 100%;
+}
+
+.SNbuttonCreateGroup {
+  width: 100%;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  color: white;
+  margin-bottom: 10px;
+
+  transition: 0.5s;
+  background: linear-gradient(
+      90deg,
+      var(--c1, #f6d365),
+      var(--c2, #fda085) 51%,
+      var(--c1, #f6d365)
+    )
+    var(--x, 0) / 200%;
+  --c1: #750227;
+  --c2: #3b005c;
+}
+
+.SNbuttonCreateGroup:hover {
+  --x: 100%;
+}
+
+.SNbuttonText {
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.SNbuttonPlusIcon {
+  width: 18px;
+  height: 18px;
+  margin-left: 10px;
+  margin-right: 7px;
+  background-image: url("../assets/icons/createIconFill.png");
+  background-size: contain;
+}
+
+.SNgroups h5 {
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  margin-top: 10px;
+}
+
+.SNgroupsContainer {
+  width: 100%;
+  height: 285px;
+  border-radius: 20px;
+  background-color: #161616;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-y: auto;
+}
+
+.SNgroupItemBody {
+  width: 100%;
+  height: 35px;
+  background-color: #252425;
+  border-radius: 20px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.SNgroupItemImage {
+  width: 35px;
+  height: 35px;
+  border-radius: 18px;
+  background-color: #750227;
+  background-size: cover;
+  margin-right: 8px;
+}
+
+.SNgroupItemText {
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: bold;
+  color: white;
+  font-size: 12px;
+}

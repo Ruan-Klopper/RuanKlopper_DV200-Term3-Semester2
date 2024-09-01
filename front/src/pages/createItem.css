@@ -1,0 +1,285 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Lexend+Exa:wght@100..900&family=Oxygen+Mono&display=swap");
+/* Fonts add
+.lexend-exa-<uniquifier> {
+  font-family: "Lexend Exa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+.oxygen-mono-regular {
+  font-family: "Oxygen Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+*/
+
+.createItemRoot {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.createPostRoot {
+  display: flex;
+  justify-content: center;
+}
+
+.groupRoot {
+  width: 500px;
+  height: auto;
+}
+
+.groupFormRoot h1 {
+  color: white;
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: 800;
+  font-size: 36px;
+  margin-bottom: 50px;
+}
+
+.groupFormGroup {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.groupFormGroup label {
+  display: block;
+  color: white;
+  font-family: "Oxygen Mono", monospace;
+  font-size: 16px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.groupFormImg {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.groupFormImgLabel {
+  display: block;
+  color: white;
+  font-family: "Oxygen Mono", monospace;
+  font-size: 16px;
+  margin-bottom: 10px;
+  margin-left: -10px;
+}
+
+.groupInput {
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #252425 !important;
+  border: 1px solid #555555;
+  color: white;
+  font-family: "Oxygen Mono", monospace;
+  font-size: 16px;
+  padding: 20px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.groupTA {
+  width: 100%;
+  height: 100px;
+  border-radius: 25px;
+  background-color: #252425 !important;
+  border: 1px solid #555555;
+  color: white;
+  font-family: "Oxygen Mono", monospace;
+  font-size: 16px;
+  padding: 20px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.groupDropdownWrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.groupDropdown {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #252425 !important;
+  border: 1px solid #555555;
+  color: white;
+  font-family: "Oxygen Mono", monospace;
+  font-size: 16px;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.groupButtonGroup {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.groupSubmit {
+  width: 100px;
+  height: 35px;
+  border-radius: 20px;
+  border-style: none;
+  background-color: #750227;
+  color: white;
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.groupSubmit:hover {
+  background-color: #c90744; /* Brighter shade when hovered */
+}
+
+.groupOther {
+  width: 100px;
+  height: 35px;
+  border-radius: 20px;
+  border-style: none;
+  border: 4px solid #555555;
+  background-color: #c9074400;
+  color: white;
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.groupOther:hover {
+  background-color: #c90744; /* Brighter shade when hovered */
+  border-color: #c90744;
+}
+
+.groupImageInput {
+  width: 100px;
+  height: 100px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #252425;
+  border: 1px solid #555555;
+  cursor: pointer;
+}
+
+.groupFormImageSource {
+  margin-top: 40px;
+  margin-left: -30px;
+}
+
+.groupFormImageSource h5 {
+  font-family: "Oxygen Mono", monospace;
+  color: #555555;
+}
+
+.groupImageInputNoImage {
+  width: 30px;
+  height: 30px;
+  background-image: url("../assets/icons/addImageIcon.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.groupImageInputImageDisplay {
+  width: 90px;
+  height: 90px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.postFormRoot h1 {
+  color: white;
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: 800;
+  font-size: 36px;
+  margin-bottom: 50px;
+}
+
+.postFormRoot {
+  width: 450px;
+}
+
+.createPostGroupTarget {
+  width: 400px;
+  border-radius: 30px;
+  border: 3px solid #750227;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.createPostSelectedGroupbannerImage {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 30px 30px 0px 0px;
+}
+
+.createPostSelectedGroupbannerImageOverlay {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: end;
+  border-radius: 30px 30px 0px 0px;
+  background: rgb(22, 22, 22);
+  background: linear-gradient(
+    0deg,
+    rgba(22, 22, 22, 1) 0%,
+    rgba(22, 22, 22, 0) 100%
+  );
+}
+
+.createPostSelectedGroupName {
+  width: 200px;
+  font-family: "Oxygen Mono", monospace;
+  font-size: 28px;
+  color: white;
+  margin-left: 20px;
+}
+
+.createPostSelectedGroupContent {
+  width: 100%;
+  padding: 20px;
+}
+
+.createPostSelectedGroupContentText {
+  font-family: "Oxygen Mono", monospace;
+  font-size: 16px;
+  color: white;
+}
+
+.createPostSelectedGroupProfileImg {
+  width: 75px;
+  height: 75px;
+  border-radius: 35px;
+  border: 3px solid #c90744;
+  background-size: cover;
+  background-position: center;
+  margin-left: 80px;
+  margin-bottom: -10px;
+}
