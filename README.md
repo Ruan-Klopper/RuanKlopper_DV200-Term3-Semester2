@@ -148,7 +148,7 @@ This **QueryQuorum** setup guide will help you get the project up and running sm
 
 1. **Place the Project Files:**
 
-   - Clone the whole `Repo` folder and move it to your `HTDOCS` directory, typically located in the `XAMPP` installation path (e.g., `C:\xampp\htdocs\` on Windows). Although not final, some API urls might not work, all API call URLs needs to be changed from: http://localhost/QueryQuorum/react_app/backend/api to: http://RuanKlopper_DV200-Term3-Semester2/backend/api
+   - Clone the whole `RuanKlopper_DV200-Term3-Semester2` folder and move it to your `HTDOCS` directory, typically located in the `XAMPP` installation path (e.g., `C:\xampp\htdocs\` on Windows). Although not final, IF some API urls doesn't, the API call URLs needs to be changed from: http://localhost/QueryQuorum/react_app/backend/api to: http://RuanKlopper_DV200-Term3-Semester2/backend/api
 
 2. **Start XAMPP Services:**
 
