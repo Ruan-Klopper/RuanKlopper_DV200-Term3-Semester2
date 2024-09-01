@@ -24,7 +24,7 @@ function saveImage($file, $type, $folder = "../uploads/groups/") {
     $targetFilePath = $targetDir . $filename;
 
     if (move_uploaded_file($file['tmp_name'], $targetFilePath)) {
-        return "http://localhost/QueryQuorum/react_app/backend/api/uploads/groups/" . $filename;
+        return "http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/uploads/groups/" . $filename;
     }
 
     return null;

@@ -23,7 +23,7 @@ function saveImage($file, $folder = "../uploads/posts/") {
     $targetFilePath = $targetDir . $filename;
 
     if (move_uploaded_file($file['tmp_name'], $targetFilePath)) {
-        return "http://localhost/QueryQuorum/react_app/backend/api/uploads/posts/" . $filename; // Return full URL for accessing the image
+        return "http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/uploads/posts/" . $filename; // Return full URL for accessing the image
     }
 
     return null; // Return null if the upload failed
