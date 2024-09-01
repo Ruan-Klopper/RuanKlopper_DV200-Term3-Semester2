@@ -14,7 +14,7 @@ const MemberItem = ({ userID }) => {
   useEffect(() => {
     if (UserID) {
       fetch(
-        `http://localhost/QueryQuorum/react_app/backend/api/v1/users.php?action=getFullUserDetails&userId=${UserID}`
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/users.php?action=getFullUserDetails&userId=${UserID}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -65,7 +65,7 @@ const GroupPostItem = ({ post }) => {
 
   const fetchGroupDetails = async (groupID) => {
     const response = await fetch(
-      `http://localhost/QueryQuorum/react_app/backend/api/v1/groups.php?action=getGroup&groupId=${groupID}`
+      `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/groups.php?action=getGroup&groupId=${groupID}`
     );
     const data = await response.json();
     if (response.ok) {
@@ -77,7 +77,7 @@ const GroupPostItem = ({ post }) => {
 
   const fetchUserDetails = async (userID) => {
     const response = await fetch(
-      `http://localhost/QueryQuorum/react_app/backend/api/v1/users.php?action=getUserDetails&userId=${userID}`
+      `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/users.php?action=getUserDetails&userId=${userID}`
     );
     const data = await response.json();
     if (response.ok) {

@@ -54,7 +54,7 @@ function LoggedInContent({ userID }) {
 
     try {
       const response = await fetch(
-        "http://localhost/QueryQuorum/react_app/backend/api/v1/groups.php",
+        "http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/groups.php",
         {
           method: "POST",
           body: formData,

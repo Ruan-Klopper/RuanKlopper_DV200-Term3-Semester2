@@ -12,7 +12,7 @@ const AccountLoggedIn = ({ userid }) => {
   useEffect(() => {
     if (currentUserID) {
       fetch(
-        `http://localhost/QueryQuorum/react_app/backend/api/v1/users.php?action=getFullUserDetails&userId=${currentUserID}`
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/users.php?action=getFullUserDetails&userId=${currentUserID}`
       )
         .then((response) => response.json())
         .then((data) => {

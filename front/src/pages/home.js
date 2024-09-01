@@ -15,7 +15,7 @@ const LoggedInContent = ({ username }) => {
 
   useEffect(() => {
     fetch(
-      `http://localhost/QueryQuorum/react_app/backend/api/v1/posts.php?action=getAllPosts`
+      `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/posts.php?action=getAllPosts`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -31,7 +31,7 @@ const LoggedInContent = ({ username }) => {
 
   useEffect(() => {
     fetch(
-      `http://localhost/QueryQuorum/react_app/backend/api/v1/users.php?action=getUserCount`
+      `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/users.php?action=getUserCount`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -49,7 +49,7 @@ const LoggedInContent = ({ username }) => {
 
   useEffect(() => {
     fetch(
-      `http://localhost/QueryQuorum/react_app/backend/api/v1/groups.php?action=getGroupCount`
+      `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/groups.php?action=getGroupCount`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -65,7 +65,7 @@ const LoggedInContent = ({ username }) => {
 
   useEffect(() => {
     fetch(
-      `http://localhost/QueryQuorum/react_app/backend/api/v1/posts.php?action=getPostCount`
+      `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/posts.php?action=getPostCount`
     )
       .then((response) => response.json())
       .then((data) => {

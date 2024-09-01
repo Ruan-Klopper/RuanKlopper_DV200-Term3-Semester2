@@ -25,7 +25,7 @@ function saveImage($file, $type, $folder = "../uploads/users/") {
 
     if (move_uploaded_file($file['tmp_name'], $targetFilePath)) {
         // Return full URL to the uploaded image
-        return "http://localhost/QueryQuorum/react_app/backend/api/uploads/users/" . $filename;
+        return "http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/uploads/users/" . $filename;
     }
 
     return null;

@@ -13,7 +13,7 @@ const MemberItem = ({ userID }) => {
   useEffect(() => {
     if (UserID) {
       fetch(
-        `http://localhost/QueryQuorum/react_app/backend/api/v1/users.php?action=getFullUserDetails&userId=${UserID}`
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/users.php?action=getFullUserDetails&userId=${UserID}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -109,7 +109,7 @@ const PostComment = ({ comment, addReply, postid }) => {
   useEffect(() => {
     if (userID) {
       fetch(
-        `http://localhost/QueryQuorum/react_app/backend/api/v1/users.php?action=getFullUserDetails&userId=${userID}`
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/users.php?action=getFullUserDetails&userId=${userID}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -129,7 +129,7 @@ const PostComment = ({ comment, addReply, postid }) => {
   useEffect(() => {
     if (postID) {
       fetch(
-        `http://localhost/QueryQuorum/react_app/backend/api/v1/comments.php?action=getChildComments&postID=${postID}&parentCommentID=${commentID}`
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/comments.php?action=getChildComments&postID=${postID}&parentCommentID=${commentID}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -150,7 +150,7 @@ const PostComment = ({ comment, addReply, postid }) => {
   const fetchChildComments = () => {
     if (postID && commentID) {
       fetch(
-        `http://localhost/QueryQuorum/react_app/backend/api/v1/comments.php?action=getChildComments&postID=${postID}&parentCommentID=${commentID}`
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/api/v1/comments.php?action=getChildComments&postID=${postID}&parentCommentID=${commentID}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -183,7 +183,7 @@ const PostComment = ({ comment, addReply, postid }) => {
       if (commentText && activeUserID) {
         try {
           const response = await fetch(
-            `http://localhost/QueryQuorum/react_app/backend/api/v1/comments.php`,
+            `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/comments.php`,
             {
               method: "POST",
               headers: {
@@ -326,7 +326,7 @@ const LoggedInContent = (userid) => {
   useEffect(() => {
     if (postID) {
       fetch(
-        `http://localhost/QueryQuorum/react_app/backend/api/v1/posts.php?action=getPostById&postID=${postID}`
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/posts.php?action=getPostById&postID=${postID}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -348,7 +348,7 @@ const LoggedInContent = (userid) => {
   useEffect(() => {
     if (postID) {
       fetch(
-        `http://localhost/QueryQuorum/react_app/backend/api/v1/posts.php?action=incrementPostViews&postID=${postID}`
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/posts.php?action=incrementPostViews&postID=${postID}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -364,7 +364,7 @@ const LoggedInContent = (userid) => {
   useEffect(() => {
     if (groupID) {
       fetch(
-        `http://localhost/QueryQuorum/react_app/backend/api/v1/groups.php?action=getGroupDetails&groupId=${groupID}`
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/groups.php?action=getGroupDetails&groupId=${groupID}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -386,7 +386,7 @@ const LoggedInContent = (userid) => {
   useEffect(() => {
     if (groupID) {
       fetch(
-        `http://localhost/QueryQuorum/react_app/backend/api/v1/groups.php?action=getGroupMembersFromID&groupId=${groupID}`
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/groups.php?action=getGroupMembersFromID&groupId=${groupID}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -408,7 +408,7 @@ const LoggedInContent = (userid) => {
   useEffect(() => {
     if (userID) {
       fetch(
-        `http://localhost/QueryQuorum/react_app/backend/api/v1/users.php?action=getFullUserDetails&userId=${userID}`
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/users.php?action=getFullUserDetails&userId=${userID}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -430,7 +430,7 @@ const LoggedInContent = (userid) => {
   useEffect(() => {
     if (currentUserID) {
       fetch(
-        `http://localhost/QueryQuorum/react_app/backend/api/v1/groupMembers.php?action=checkUserInGroup&groupID=${groupID}&userID=${currentUserID.userID}`
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/groupMembers.php?action=checkUserInGroup&groupID=${groupID}&userID=${currentUserID.userID}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -456,7 +456,7 @@ const LoggedInContent = (userid) => {
   useEffect(() => {
     if (postID) {
       fetch(
-        `http://localhost/QueryQuorum/react_app/backend/api/v1/comments.php?action=getAllCommentsByPostID&postID=${postID}`
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/comments.php?action=getAllCommentsByPostID&postID=${postID}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -478,7 +478,7 @@ const LoggedInContent = (userid) => {
   useEffect(() => {
     if (postID) {
       fetch(
-        `http://localhost/QueryQuorum/react_app/backend/api/v1/comments.php?action=getAllCommentExcludeParent&postID=${postID}`
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/comments.php?action=getAllCommentExcludeParent&postID=${postID}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -501,7 +501,7 @@ const LoggedInContent = (userid) => {
     if (text && currentUserID) {
       try {
         const response = await fetch(
-          `http://localhost/QueryQuorum/react_app/backend/api/v1/comments.php`,
+          `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/comments.php`,
           {
             method: "POST",
             headers: {
@@ -533,7 +533,7 @@ const LoggedInContent = (userid) => {
     if (postID) {
       try {
         const response = await fetch(
-          `http://localhost/QueryQuorum/react_app/backend/api/v1/comments.php?action=getAllCommentExcludeParent&postID=${postID}`
+          `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/comments.php?action=getAllCommentExcludeParent&postID=${postID}`
         );
         const data = await response.json();
         if (response.ok && data) {
@@ -554,7 +554,7 @@ const LoggedInContent = (userid) => {
     if (!userJoined && currentUserID) {
       try {
         const response = await fetch(
-          `http://localhost/QueryQuorum/react_app/backend/api/v1/groupMembers.php?action=addGroupMember&groupID=${groupID}&userID=${currentUserID.userID}&role=member`,
+          `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/groupMembers.php?action=addGroupMember&groupID=${groupID}&userID=${currentUserID.userID}&role=member`,
           {
             method: "POST",
           }
@@ -577,7 +577,7 @@ const LoggedInContent = (userid) => {
   const fetchGroupMembers = () => {
     if (groupID) {
       fetch(
-        `http://localhost/QueryQuorum/react_app/backend/api/v1/groups.php?action=getGroupMembersFromID&groupId=${groupID}`
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/groups.php?action=getGroupMembersFromID&groupId=${groupID}`
       )
         .then((response) => response.json())
         .then((data) => {
