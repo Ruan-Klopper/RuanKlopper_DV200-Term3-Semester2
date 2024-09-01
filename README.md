@@ -173,7 +173,6 @@ This **QueryQuorum** setup guide will help you get the project up and running sm
 
    - Enter the following commands in the terminal to navigate to the React app directory:
      ```bash
-     cd react_app
      cd front
      ```
 
