@@ -133,3 +133,14 @@
   background-position: center;
   border-radius: 0px 0px 30px 30px;
 }
+
+.postDeleteButton {
+  height: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-style: none;
+  border-radius: 15px;
+  background-color: #e91c1e;
+  font-family: "Oxygen Mono", monospace;
+  color: white;
+}

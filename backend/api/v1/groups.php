@@ -131,8 +131,24 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 http_response_code(404);
                 echo json_encode(['message' => 'Group not found']);
             }
+        } else if (isset($_GET['action']) && $_GET['action'] === 'getGroupsByUserID' && isset($_GET['userId'])) {
+            $userId = $_GET['userId'];
+            $stmt = $db->prepare("
+                SELECT g.* 
+                FROM Groups g 
+                JOIN GroupMembers gm ON g.groupID = gm.groupID 
+                WHERE gm.userID = ?
+            ");
+            $stmt->execute([$userId]);
+            $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if ($groups) {
+                echo json_encode(['groups' => $groups]);
+            } else {
+                http_response_code(404);
+                echo json_encode(['message' => 'No groups found']);
+            }
         }
-  
         break;
 
     default:

@@ -3,6 +3,9 @@ import "./navbar.css";
 import { Link } from "react-router-dom";
 
 const DesktopNavLoggedIn = ({ currentPage, username, userProfilePicURL }) => {
+  const handleLogOut = () => {
+    sessionStorage.clear();
+  };
   return (
     <div className="DNavbody">
       <Link to="/Home" style={{ textDecoration: "none" }}>
@@ -25,6 +28,7 @@ const DesktopNavLoggedIn = ({ currentPage, username, userProfilePicURL }) => {
             to="/SignIn"
             className="DACCITEM"
             style={{ textDecoration: "none" }}
+            onClick={handleLogOut}
           >
             Sign Out
           </Link>

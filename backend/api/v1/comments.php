@@ -81,6 +81,21 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
             echo json_encode($comments);
 
+        } else if (isset($_GET['action']) && $_GET['action'] === 'getCommentCountByPostID' && isset($_GET['postID'])) {
+            $postID = $_GET['postID'];
+
+            $query = "SELECT COUNT(*) AS commentCount FROM Comments WHERE postID = ?";
+            $stmt = $db->prepare($query);
+            $stmt->bindParam(1, $postID, PDO::PARAM_INT);
+            $stmt->execute();
+            $count = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($count) {
+                echo json_encode(['commentCount' => $count['commentCount']]);
+            } else {
+                http_response_code(404);
+                echo json_encode(['message' => 'No comments found for this post']);
+            }
         } else {
             http_response_code(400);
             echo json_encode(['message' => 'Invalid request']);

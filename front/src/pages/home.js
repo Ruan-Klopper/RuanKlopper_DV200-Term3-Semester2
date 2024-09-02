@@ -128,14 +128,6 @@ const LoggedInContent = ({ username }) => {
               <div className="homeHeaderImage"></div>
             </div>
           </div>
-          <div className="homeHotDiscussionsCont">
-            <div className="homeHotDiscussions">
-              <h3>🔥 Hot discussions 🔥</h3>
-              <div className="homeHotDiscussionsPostCont">
-                <div className="homePostWrapper"></div>
-              </div>
-            </div>
-          </div>
           <div className="homeSplitterLine"></div>
           <div className="homePostContWrapper">
             <div className="homePostContainer">
@@ -166,6 +158,56 @@ const LoggedOutContent = () => {
   const [postsCount, setPostsCount] = useState("");
   const [usersCount, setUsersCount] = useState("");
   const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/users.php?action=getUserCount`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data && data.totalUsers !== undefined) {
+          setUsersCount(data.totalUsers); // Accessing the correct field
+        } else {
+          setUsersCount(0); // Default to 0 if no data or field found
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching user count:", error);
+        setUsersCount("0"); // Default to 0 in case of error
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch(
+      `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/groups.php?action=getGroupCount`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data && data.totalGroups !== undefined) {
+          setGroupsCount(data.totalGroups);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching posts:", error);
+        setGroupsCount("0");
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch(
+      `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/posts.php?action=getPostCount`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data && data.totalPosts !== undefined) {
+          setPostsCount(data.totalPosts);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching posts:", error);
+        setPostsCount("0");
+      });
+  }, []);
 
   useEffect(() => {
     fetch(
@@ -272,28 +314,20 @@ const LoggedOutContent = () => {
 
                 <div className="homeHeaderStatsContainer">
                   <div className="homeStatItem">
-                    <div className="homeStatHeading">689k</div>
+                    <div className="homeStatHeading">{groupsCount}</div>
                     <div className="homeStatsubHeading">Groups</div>
                   </div>
                   <div className="homeStatItem">
-                    <div className="homeStatHeading">134k</div>
+                    <div className="homeStatHeading">{postsCount}</div>
                     <div className="homeStatsubHeading">Posts</div>
                   </div>
                   <div className="homeStatItem">
-                    <div className="homeStatHeading">12k</div>
+                    <div className="homeStatHeading">{usersCount}</div>
                     <div className="homeStatsubHeading">Members</div>
                   </div>
                 </div>
               </div>
               <div className="homeHeaderImage"></div>
-            </div>
-          </div>
-          <div className="homeHotDiscussionsCont">
-            <div className="homeHotDiscussions">
-              <h3>🔥 Hot discussions 🔥</h3>
-              <div className="homeHotDiscussionsPostCont">
-                <div className="homePostWrapper"></div>
-              </div>
             </div>
           </div>
           <div className="homeSplitterLine"></div>

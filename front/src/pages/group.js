@@ -52,6 +52,29 @@ const GroupPostItem = ({ post }) => {
   const postLikesCount = post.postLikes ? post.postLikes : 0;
   const postTargetURL = "/post?" + post.postID;
 
+  // Post reply count
+  const [postReplyCount, setPostReplyCount] = useState(0);
+
+  useEffect(() => {
+    if (post.postID) {
+      fetch(
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/comments.php?action=getCommentCountByPostID&postID=${post.postID}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          if (data && !data.message) {
+            // If there's no error message in the response
+            setPostReplyCount(data.commentCount);
+          } else {
+            console.error(data.message || "Post not found");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching post data:", error);
+        });
+    }
+  }, [post.postID]);
+
   // API call to users.php to fetch userProfilePic and userName using the userID
   // API call to groups.php to fetch groupname using the groupID
   useEffect(() => {
@@ -112,10 +135,7 @@ const GroupPostItem = ({ post }) => {
           <div className="postBottomGroupLeft">
             <div className="postRepliesGroup">
               <div className="postReplyIcon"></div>
-              <div className="postReplyAmount">XX Relies</div>
-            </div>
-            <div className="postLeftOther">
-              {postViewsCount} views, {postLikesCount} likes
+              <div className="postReplyAmount">{postReplyCount} Relies</div>
             </div>
           </div>
         </div>

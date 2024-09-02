@@ -81,8 +81,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
         echo json_encode($count);
     }
     break;
-
-
         
     case 'POST':
         $username = $_POST['username'];
@@ -114,6 +112,66 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
         break;
     
+    case 'PUT':
+        if (isset($_GET['action']) && $_GET['action'] === 'updateUserInfo' && isset($_GET['userId'])) {
+            parse_str(file_get_contents("php://input"), $_PUT); // Parse the input data
+            $userId = $_GET['userId'];
+
+            // Initialize query and parameters
+            $query = "UPDATE Users SET ";
+            $params = [];
+            $updates = [];
+
+            // Check each field, if not blank, add to the query
+            if (!empty($_PUT['username'])) {
+                $updates[] = "username = ?";
+                $params[] = $_PUT['username'];
+            }
+            if (!empty($_PUT['userFirstname'])) {
+                $updates[] = "userFirstname = ?";
+                $params[] = $_PUT['userFirstname'];
+            }
+            if (!empty($_PUT['userLastname'])) {
+                $updates[] = "userLastname = ?";
+                $params[] = $_PUT['userLastname'];
+            }
+            if (!empty($_PUT['userBio'])) {
+                $updates[] = "userBio = ?";
+                $params[] = $_PUT['userBio'];
+            }
+            if (!empty($_PUT['userEmail'])) {
+                $updates[] = "userEmail = ?";
+                $params[] = $_PUT['userEmail'];
+            }
+            if (!empty($_PUT['userPassword'])) {
+                $updates[] = "userPassword = ?";
+                $params[] = password_hash($_PUT['userPassword'], PASSWORD_DEFAULT);
+            }
+
+            // Ensure there are fields to update
+            if (count($updates) > 0) {
+                $query .= implode(", ", $updates) . " WHERE userID = ?";
+                $params[] = $userId;
+
+                // Execute the query
+                $stmt = $db->prepare($query);
+                $result = $stmt->execute($params);
+
+                if ($result) {
+                    echo json_encode(['message' => 'User information updated successfully']);
+                } else {
+                    http_response_code(500);
+                    echo json_encode(['message' => 'Failed to update user information', 'error' => $stmt->errorInfo()]);
+                }
+            } else {
+                echo json_encode(['message' => 'No valid fields provided for update']);
+            }
+        } else {
+            http_response_code(400);
+            echo json_encode(['message' => 'Invalid request for updating user information']);
+        }
+    break;
+
     default:
         http_response_code(405);
         echo json_encode(['message' => 'Method Not Allowed']);

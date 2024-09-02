@@ -49,10 +49,29 @@ const MainPost = ({
   postTitle,
   postDescription,
   postImage,
-  postComments,
-  postSaves,
   postID,
 }) => {
+  const [postReplyCount, setPostReplyCount] = useState(0);
+
+  useEffect(() => {
+    if (postID) {
+      fetch(
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/comments.php?action=getCommentCountByPostID&postID=${postID}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          if (data && !data.message) {
+            // If there's no error message in the response
+            setPostReplyCount(data.commentCount);
+          } else {
+            console.error(data.message || "Post not found");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching post data:", error);
+        });
+    }
+  }, [postID]);
   return (
     <>
       <div className="mainPostBody">
@@ -76,13 +95,7 @@ const MainPost = ({
           <div style={{ display: "flex" }}>
             <button className="mainPostComments">
               <div className="mainPostCommentsIcon"></div>
-              <div>{postComments}</div>
-            </button>
-          </div>
-          <div>
-            <button className="mainPostSaves">
-              <div className="mainPostSavesIcon"></div>
-              <div>{postSaves}</div>
+              <div>{postReplyCount}</div>
             </button>
           </div>
         </div>
@@ -150,7 +163,7 @@ const PostComment = ({ comment, addReply, postid }) => {
   const fetchChildComments = () => {
     if (postID && commentID) {
       fetch(
-        `http://localhost/RuanKlopper_DV200-Term3-Semester2/api/v1/comments.php?action=getChildComments&postID=${postID}&parentCommentID=${commentID}`
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/comments.php?action=getChildComments&postID=${postID}&parentCommentID=${commentID}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -703,6 +716,397 @@ const LoggedInContent = (userid) => {
   );
 };
 
+const LoggedOutContent = (userid) => {
+  // Get the selected post to view from the url post?(postID
+  const location = useLocation();
+  const query = location.search;
+  const postID = query.substring(1);
+  console.log("Current page:" + postID);
+
+  const [post, setPost] = useState([]);
+  const postCreationDate = post.postCreationDate;
+  const date = new Date(postCreationDate);
+  const options = { day: "numeric", month: "long", year: "numeric" };
+  const postCreation = date.toLocaleDateString("en-GB", options);
+  const postViewsCount = post.postViews ? post.postViews : 0;
+  const postLikesCount = post.postLikes ? post.postLikes : 0;
+
+  const groupID = post.groupID;
+  const [group, setGroup] = useState([]);
+  const [groupMembers, setGroupMembers] = useState([]);
+
+  const userID = post.userID;
+  const [user, setUser] = useState([]);
+
+  const currentUserID = userid;
+  console.log("Active user:", userid);
+
+  // Get all comments using the postID
+  const [allComments, setAllComments] = useState([]);
+  // Get all comments using the postID and Comments that dont have parentCommentID
+  const [parentComments, setAllParentComments] = useState([]);
+  const [commentText, setCommentText] = useState("");
+
+  const [userJoined, setUserJoined] = useState(false);
+
+  // Get post information by postID
+  useEffect(() => {
+    if (postID) {
+      fetch(
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/posts.php?action=getPostById&postID=${postID}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Fetched post:", data);
+          if (data && !data.message) {
+            // If there's no error message in the response
+            setPost(data);
+          } else {
+            console.error(data.message || "Post not found");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching post data:", error);
+        });
+    }
+  }, [postID]);
+
+  // Add view for when the user has landed on the page
+  useEffect(() => {
+    if (postID) {
+      fetch(
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/posts.php?action=incrementPostViews&postID=${postID}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("POST VIEWS:", data);
+        })
+        .catch((error) => {
+          console.error("Error fetching post data:", error);
+        });
+    }
+  }, [postID]);
+
+  // Get group information by post.groupID
+  useEffect(() => {
+    if (groupID) {
+      fetch(
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/groups.php?action=getGroupDetails&groupId=${groupID}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Fetched post group:", data);
+          if (data && !data.message) {
+            // If there's no error message in the response
+            setGroup(data);
+          } else {
+            console.error(data.message || "Post not found");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching post data:", error);
+        });
+    }
+  }, [groupID]);
+
+  // Get all group member id tags
+  useEffect(() => {
+    if (groupID) {
+      fetch(
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/groups.php?action=getGroupMembersFromID&groupId=${groupID}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Fetched post groupMembers:", data);
+          if (data && !data.message) {
+            // If there's no error message in the response
+            setGroupMembers(data);
+          } else {
+            console.error(data.message || "Post not found");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching post data:", error);
+        });
+    }
+  }, [groupID]);
+
+  // Get user information by post.userID
+  useEffect(() => {
+    if (userID) {
+      fetch(
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/users.php?action=getFullUserDetails&userId=${userID}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Fetched post user:", data);
+          if (data && !data.message) {
+            // If there's no error message in the response
+            setUser(data);
+          } else {
+            console.error(data.message || "Post not found");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching post data:", error);
+        });
+    }
+  }, [userID]);
+
+  // Check if the current user is a member of the group
+  useEffect(() => {
+    if (currentUserID) {
+      fetch(
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/groupMembers.php?action=checkUserInGroup&groupID=${groupID}&userID=${currentUserID.userID}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Is the user in the group?:", data);
+          console.log("currentUserID:", currentUserID);
+          console.log("groupId:", groupID);
+          if (data && !data.message) {
+            // If there's no error message in the response
+            setUserJoined(data.exists);
+          } else {
+            console.error(data.message || "Post not found");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching post data:", error);
+        });
+    } else {
+      console.log("/nUser not logged in/n");
+    }
+  }, [groupID]);
+
+  // Get all comments by post.postID
+  useEffect(() => {
+    if (postID) {
+      fetch(
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/comments.php?action=getAllCommentsByPostID&postID=${postID}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("All parent comments for this post:", data);
+          if (data && !data.message) {
+            // If there's no error message in the response
+            setAllParentComments(data);
+          } else {
+            console.error(data.message || "Post not found");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching post data:", error);
+        });
+    }
+  }, [postID]);
+
+  // Get all comments without parentCommentID by post.postID
+  useEffect(() => {
+    if (postID) {
+      fetch(
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/comments.php?action=getAllCommentExcludeParent&postID=${postID}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("All comments for this post:", data);
+          if (data && !data.message) {
+            // If there's no error message in the response
+            setAllParentComments(data);
+          } else {
+            console.error(data.message || "Post not found");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching post data:", error);
+        });
+    }
+  }, [postID]);
+
+  // Add a comment to the post, this is only for the main "parent comments" that don't have a parent comment ID
+  const handleAddComment = async (text) => {
+    if (text && currentUserID) {
+      try {
+        const response = await fetch(
+          `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/comments.php`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              postID: postID,
+              userID: currentUserID.userID,
+              commentText: text,
+            }),
+          }
+        );
+
+        const result = await response.json();
+        if (response.ok) {
+          // Re-fetch comments after adding a new one
+          fetchAllParentComments();
+        } else {
+          alert("Failed to add comment: " + result.message);
+        }
+      } catch (error) {
+        alert("Error submitting comment: " + error.message);
+      }
+    }
+  };
+
+  // Function to fetch all parent comments
+  const fetchAllParentComments = async () => {
+    if (postID) {
+      try {
+        const response = await fetch(
+          `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/comments.php?action=getAllCommentExcludeParent&postID=${postID}`
+        );
+        const data = await response.json();
+        if (response.ok && data) {
+          setAllParentComments(data);
+        } else {
+          console.error(data.message || "Failed to fetch comments");
+        }
+      } catch (error) {
+        console.error("Error fetching comments:", error);
+      }
+    }
+  };
+
+  // User joined group
+  const handleJoinGroup = async (e) => {
+    e.preventDefault();
+
+    if (!userJoined && currentUserID) {
+      try {
+        const response = await fetch(
+          `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/groupMembers.php?action=addGroupMember&groupID=${groupID}&userID=${currentUserID.userID}&role=member`,
+          {
+            method: "POST",
+          }
+        );
+        const result = await response.json();
+        console.log(result); // Log the response from the server
+        if (response.ok) {
+          alert("User registered successfully");
+          setUserJoined(true); // Update the state to reflect the user has joined
+          fetchGroupMembers();
+        } else {
+          alert("Failed to add user to the group: " + result.message);
+        }
+      } catch (error) {
+        alert("Error submitting data: " + error.message);
+      }
+    }
+  };
+
+  const fetchGroupMembers = () => {
+    if (groupID) {
+      fetch(
+        `http://localhost/RuanKlopper_DV200-Term3-Semester2/backend/api/v1/groups.php?action=getGroupMembersFromID&groupId=${groupID}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Fetched post groupMembers:", data);
+          if (data && !data.message) {
+            // If there's no error message in the response
+            setGroupMembers(data);
+          } else {
+            console.error(data.message || "Post not found");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching post data:", error);
+        });
+    }
+  };
+
+  // Get all group member id tags
+  useEffect(() => {
+    fetchGroupMembers(); // Call this function to fetch the comments when the component mounts or when parentComments changes
+  }, [groupID]);
+
+  return (
+    <>
+      <div className="postPageRoot">
+        <div className="postPageContent">
+          <div className="postPageContentLeft">
+            <MainPost
+              userProfilePic={user.userProfilePic}
+              userName={user.username}
+              postTitle={post.postTitle}
+              postCreationDate={postCreation}
+              postDescription={post.postDescription}
+              postImage={post.postImage}
+              postLikes={post.postLikes}
+              postComments={"4"}
+              postSaves={"25"}
+              postID={postID}
+            />
+            <h3 className="postPageAddCommentTop">
+              Please login or signup to comment
+            </h3>
+          </div>
+          <div className="groupPageContentRight">
+            <div className="groupDetailsBody">
+              <div
+                className="groupDetailsImage"
+                style={{ backgroundImage: `url(${group.groupBannerPic})` }}
+              >
+                <div className="groupDetailsImageOverlay">
+                  <div className="groupDetailsName">{group.groupName}</div>
+
+                  {/* If userJoined is true then change the buttons text to Joined, if not set the button text to JOin */}
+                  <button
+                    className="postGroupDetailsJoinBtn"
+                    onClick={handleJoinGroup}
+                  >
+                    {userJoined ? "Joined" : "Join"}
+                  </button>
+                </div>
+              </div>
+              <div className="groupDetailsContent">
+                <div className="groupDetailsContentText">
+                  {group.groupDescription}
+                </div>
+                <div className="groupDetailsContentText">
+                  {group.groupRules}
+                </div>
+              </div>
+            </div>
+            <div className="groupDetailsMembersBody">
+              <h4>Group members</h4>
+              <div className="groupDetailsMembersContainer">
+                {groupMembers.map((groupMember) => (
+                  <MemberItem
+                    key={groupMember.userID}
+                    userID={groupMember.userID}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+          {/* Width same as combined items above */}
+        </div>
+        <div className="postPageComments">
+          <h3 className="commentsHeaderH3">Answers</h3>
+          {/* All of the comments go here */}
+          {parentComments.map((parentComment) => (
+            <div className="commentBodyParent">
+              <PostComment
+                key={parentComment.commentID}
+                comment={parentComment}
+                currentUserID={currentUserID}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
 function Post() {
   const [sessionUserID, setSessionUserID] = useState("");
   const userId = sessionStorage.getItem("userId");
@@ -720,7 +1124,11 @@ function Post() {
           <SideNav currentPage={"Group: arduino"} />
         </div>
         <div className="WebsiteRoot">
-          <LoggedInContent userID={sessionUserID} />
+          {sessionUserID ? (
+            <LoggedInContent userID={sessionUserID} />
+          ) : (
+            <LoggedOutContent userID={sessionUserID} />
+          )}
         </div>
       </div>
     </div>

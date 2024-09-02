@@ -93,8 +93,19 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 http_response_code(500);
                 echo json_encode(['message' => 'Failed to increment post likes']);
             }
-        }
+        } else if (isset($_GET['action']) && $_GET['action'] === 'getPostsByUserID' && isset($_GET['userID'])) {
+            $userID = $_GET['userID'];
+            $query = "SELECT * FROM Posts WHERE userID = ? ORDER BY postCreationDate DESC";
+            $stmt = $db->prepare($query);
+            $stmt->execute([$userID]);
+            $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            if ($posts) {
+                echo json_encode($posts);
+            } else {
+                echo json_encode(['message' => 'No posts found for this user']);
+            }
+        }
         break;
 
         
@@ -115,8 +126,38 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
         break;
 
-        // When url called, must increment the postViews with one
-        // When url called, must increment the postLikes with one
+    case 'DELETE':
+        if (isset($_GET['action']) && $_GET['action'] === 'deletePost' && isset($_GET['postID'])) {
+            $postID = $_GET['postID'];
+
+            try {
+                // Begin transaction
+                $db->beginTransaction();
+
+                // Step 1: Delete all comments linked to the postID
+                $stmt1 = $db->prepare("DELETE FROM Comments WHERE postID = ?");
+                $stmt1->execute([$postID]);
+
+                // Step 2: Delete the post itself
+                $stmt2 = $db->prepare("DELETE FROM Posts WHERE postID = ?");
+                $stmt2->execute([$postID]);
+
+                // Commit the transaction
+                $db->commit();
+
+                echo json_encode(['message' => 'Post and associated comments deleted successfully']);
+            } catch (Exception $e) {
+                // Rollback the transaction if something failed
+                $db->rollBack();
+                http_response_code(500);
+                echo json_encode(['message' => 'Failed to delete post and associated comments', 'error' => $e->getMessage()]);
+            }
+        } else {
+            http_response_code(400);
+            echo json_encode(['message' => 'Invalid request for deleting post']);
+        }
+    break;
+
     default:
         http_response_code(405);
         echo json_encode(['message' => 'Method Not Allowed']);
